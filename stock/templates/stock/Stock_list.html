@@ -1,0 +1,41 @@
+{% extends "stock/main.html" %}
+{% block content %}
+<div class="container p-5">
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                 <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    <h1>قائمة المنتجات</h1>
+    <a class="btn btn-primary w-50 m-3" href="{% url 'stock:Stock_create' %}">اضافة جديد</a>
+    <table class="table table-bordered text-center table-striped table-hover">
+        <thead>
+            <tr class="roww">
+                <th class="">الاسم</th>
+                <th class="">الكمية</th>
+                <th class="">السعر</th>
+                <th>أمر 1</th>
+                <th>أمر 2</th>
+                <th>أمر 3</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for box in boxes%}
+            <tr class="">
+                <td class="">{{box.name}}</td>
+                <td class="">{{box.amount}}</td>
+                <td class="">{{box.price}}</td>
+                <td>
+                <a class="btn btn-info text-white" href="{% url 'stock:box_barcode' box.id%}">عرض الباركود للمنتج</a><br>
+                
+                </td>
+                <td><a class="btn btn-danger text-white" href="{% url 'stock:Stock_update' box.id%}">تعديل البيانات</a></td>
+                <td><a class="btn btn-warning text-white" href="{% url 'stock:Stock_delete' box.id%}">حذف المنتج</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

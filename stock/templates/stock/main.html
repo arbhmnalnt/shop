@@ -1,17 +1,18 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html dir="rtl" lang="ar">
 <head>
   <title>البرنامج</title>
-  <link rel="stylesheet" href="{% static 'cashier/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'cashier/css/bootstrap.rtl.min.css' %}">
 </head>
-<body>
+<body class="container-fluid">
   <main>
     {% block content %}
     {% endblock %}
   </main>
 
   <footer>
-    <p>&copy; 2024 BY AMDS</p>
+    <p>التصميم والبرمجة بواسطة <a class="" href="#">AMDS</a> الحقوق محفوظة&copy; 2024 </p>
   </footer>
 
   <script src="{% static 'cashier/js/bootstrap.bundle.min.js' %}"></script>
