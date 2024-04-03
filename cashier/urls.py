@@ -1,9 +1,12 @@
 from django.urls import path
-from . import views
-from stock.views import barcode_image
+from .views import *
 
+app_name    =   'cashier'
 
 urlpatterns = [
-    path('', views.home),
-    #path('box/<int:box_id>/barcode/', barcode_image, name='box-barcode'),
+    path('', SoldListView.as_view(), name='list'),
+    # path('<int:pk>/', SoldDetailView.as_view(), name='Sold_detail'),
+    path('new/', SoldCreateView.as_view(), name='Sold_create'),
+    # path('<int:pk>/update/', SoldUpdateView.as_view(), name='Sold_update'),
+    # path('<int:pk>/delete/', SoldDeleteView.as_view(), name='Sold_delete'),
 ]

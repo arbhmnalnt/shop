@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*6dd$s5h)qej@8@+!px1hr1d2xp@adr$!z7%5@2j0vy0i^eutn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -57,15 +57,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-SESSION_COOKIE_SECURE = True 
-SESSION_COOKIE_DOMAIN='localhost'
+# SESSION_COOKIE_SECURE = True 
+# SESSION_COOKIE_DOMAIN='localhost'
 
 ROOT_URLCONF = 'shop.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

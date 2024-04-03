@@ -1,0 +1,38 @@
+{% extends "cashier/main.html" %}
+{% block content %}
+<div class="container p-5">
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                 <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    <h1>قائمة المنتجات</h1>
+    <a class="btn btn-primary w-50 m-3" href="{% url 'cashier:Sold_create' %}">اضافة جديد</a>
+    <table class="table table-bordered text-center table-striped table-hover">
+        <thead>
+            <tr class="roww">
+                <th class="">الاسم</th>
+                <th class="">السعر</th>
+                <th class="">تاريخ البيع</th>
+                <th>أمر 1</th>
+                <th>أمر 2</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for record in solds%}
+            <tr class="">
+                <td class="">{{record.box.name}}</td>
+                <td class="">{{record.box.price}}</td>
+                <td>
+                <a class="btn btn-info text-white" href="{% url 'stock:box_barcode' record.box.id%}">عرض الباركود للمنتج</a><br>
+                </td>
+                <td class="">{{record.created_at|date:'Y-m-d / m:s A'}}</td>
+                <td><a class="btn btn-danger text-white" href="#">طلب حذف عملية البيع</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
